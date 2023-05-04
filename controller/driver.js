@@ -417,7 +417,7 @@ export const addAmount = async (req, res) => {
         },
       }
     );
-    res.redirect("http://localhost:3000/driver/wallet");
+    res.redirect("https://master.d248sx3e8kcbss.amplifyapp.com/driver/wallet");
   } catch (error) {
     res.status(500).json({ error: "Internal Server Error !" })
   }

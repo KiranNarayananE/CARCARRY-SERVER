@@ -338,7 +338,7 @@ export const addAmount = async (req, res) => {
         },
       }
     );
-    res.redirect("http://localhost:3000/wallet");
+    res.redirect("https://master.d248sx3e8kcbss.amplifyapp.com/wallet");
   } catch (error) {}
 };
 
