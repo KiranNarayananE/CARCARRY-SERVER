@@ -1,5 +1,5 @@
 import express from "express";
-import {acceptRide, declineRide, endTrip, getBookingDetails, getBookingHistory, getBookings, getCurrentLocation,carDetails, getPendingBookingList, login, setCurrentLocation, signup, startTrip, startedTrip,reachedPickup,destinationstart, acceptBooking,getWalletBalance,getWalletHistory,addCashWallet,addAmount,barGraph,pieGraph,emergency} from "../controller/driver.js";
+import {acceptRide, declineRide, endTrip, getBookingDetails, getBookingHistory, getBookings, getCurrentLocation,carDetails, getPendingBookingList, login, setCurrentLocation, signup, startTrip, startedTrip,reachedPickup,destinationstart, acceptBooking,getWalletBalance,getWalletHistory,addCashWallet,addAmount,barGraph,pieGraph,emergency,report} from "../controller/driver.js";
 import { verifyTokenDriver } from "../middleware/auth.js";
 import multer from "../middleware/multer.js"
 
@@ -26,6 +26,7 @@ router.patch("/emergency", verifyTokenDriver, emergency)
 router.get("/wallet-balance", verifyTokenDriver, getWalletBalance);
 router.get("/wallet-details", verifyTokenDriver, getWalletHistory);
 router.post("/add-cash", verifyTokenDriver, addCashWallet);
+router.get("/report",verifyTokenDriver,report)
 router.get("/payment-add", addAmount);
 router.get("/salesProject",verifyTokenDriver,barGraph)
 router.get("/graph",verifyTokenDriver,pieGraph)

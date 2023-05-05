@@ -162,6 +162,19 @@ export const getBookingHistory = async (req, res) => {
     res.status(500).json({ error: "Internal Server Error!" });
   }
 };
+export const report = async (req, res) => {
+  try {
+    const { id } = req.user;
+    const bookings = await tripModel.aggregate([
+      { $match: { driver: new mongoose.Types.ObjectId(id), bookingStatus: "Completed" } },
+      { $lookup: { from: "users", localField: "user", foreignField: "_id", as: "user" } },
+      { $project: { "user.password": 0 } },
+    ]);
+    return res.status(200).json({ report: bookings });
+  } catch (error) {
+    return res.status(500).json({ error: "Internal Server Error !" });
+  }
+};
 export const getBookingDetails = async (req, res) => {
   try {
     const { id } = req.params;

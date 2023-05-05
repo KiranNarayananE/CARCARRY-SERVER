@@ -287,6 +287,7 @@ export const paymentSucess = async (req, res) => {
     { _id: payment.driver},
     {
       $inc: { "wallet.Amount":payment.payment.amount*.9},
+      $push: { "wallet.transactions": {transactionID:payment._id.toString(), method: "Recieved for trip", cash:payment.payment.amount*.9} }
     }
   );
   res.redirect(process.env.REDIRECT_URL);
